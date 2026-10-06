@@ -1,8 +1,16 @@
 # Repository Guidelines
 
-## Project Structure & Module Organization
+This is a university Android assignment project using Java and XML Views. The single application module is `app`.
 
-This Android assignment uses Java and XML Views, not Kotlin or Jetpack Compose. The single application module is `app`.
+## Assignment Requirements & Workflow
+
+- Follow the assignment specification as the primary source of requirements. The assigned UI is **Design 2: User Registration**. Do not silently change or invent requirements; ask the user when a requirement is ambiguous or information is missing.
+- For the current submission, the report is **not required**. Focus only on the required Java and XML deliverables.
+- Implement the XML version with XML Views in `app/src/main/res/layout/` first, and complete and verify it before implementing the Java programmatic version.
+- Build the programmatic UI with Java-created views, matching the completed XML implementation visually as closely as possible. Preserve the completed XML implementation when adding the Java version.
+- Keep the solution simple, clear, readable, and appropriate for a university assignment. Prefer standard Android widgets and layouts; do not over-engineer or add unnecessary libraries, dependencies, files, activities, or abstractions.
+
+## Project Structure & Module Organization
 
 - `app/src/main/java/com/example/assignment01/`: Java sources, including `MainActivity.java`.
 - `app/src/main/res/layout/`: XML layouts, currently `activity_main.xml`.
@@ -25,16 +33,20 @@ Use Android Studio for Gradle Sync, emulator management, and Run/Debug. The proj
 
 ## Coding Style & Naming Conventions
 
+Use Java for application code and tests; do not use Kotlin or Jetpack Compose. Retain the existing Kotlin DSL Gradle scripts as build configuration.
+
 Use four-space indentation in Java and XML. Use `UpperCamelCase` for classes, `lowerCamelCase` for methods/variables, and `UPPER_SNAKE_CASE` for constants. Name resources and view IDs with `lower_snake_case`, such as `button_register`. Store UI text and colors in resources; use `dp` for dimensions and `sp` for text. No dedicated formatter is configured; follow Android Studio formatting and Android Lint.
 
 ## Testing Guidelines
 
-Tests use JUnit 4, AndroidJUnit4, and Espresso. Name test classes `*Test.java` and methods descriptively. Existing tests are template checks; no coverage threshold is specified. Verify both UI versions on the same emulator, including scrolling, keyboard interaction, and system-bar insets.
+Tests use JUnit 4, AndroidJUnit4, and Espresso. Name test classes `*Test.java` and methods descriptively. Existing tests are template checks; no coverage threshold is specified. After implementation changes, check for relevant build/compile errors with `assembleDebug` and run tests and lint appropriate to the change. Verify the XML version first, then both UI versions on the same emulator, including scrolling, keyboard interaction, visual consistency, and system-bar insets.
 
 ## Commit & Pull Request Guidelines
 
-No Git metadata is present, so existing commit conventions cannot be established. If version control is added, use concise imperative commit subjects. Pull requests should explain the change, list validation performed, link relevant issues, and include screenshots for UI changes.
+This project is a Git repository connected to GitHub. Use concise imperative commit subjects. Pull requests should explain the change, list validation performed, link relevant issues, and include screenshots for UI changes. Never commit `local.properties`, credentials, or generated build output.
 
-## Assignment Scope & Configuration
+## Change Scope & Configuration
 
-Implement Design 2, User Registration, in XML and independently through Java-created views. Keep their appearance consistent; the report is not required. Preserve existing edge-to-edge handling. Avoid unnecessary dependencies or build configuration changes. Never commit `local.properties`, credentials, or generated build output.
+- Preserve the existing project structure whenever possible and retain existing edge-to-edge handling.
+- Keep file changes focused on the current task. Do not make unrelated refactors or improvements.
+- Do not modify Gradle files, `AndroidManifest.xml`, dependencies, SDK configuration, the package name, or unrelated project files unless genuinely required. Before modifying configuration or unrelated files, explain why the change is necessary.
