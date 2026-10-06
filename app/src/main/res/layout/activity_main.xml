@@ -1,19 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/registration_purple"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- Decorative reference icon; navigation is outside this UI assignment. -->
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_registration_back" />
+
+        <TextView
+            android:id="@+id/text_registration_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_weight="1"
+            android:text="@string/user_registration"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scroll_registration"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                style="@style/RegistrationLabel"
+                android:text="@string/full_name" />
+
+            <EditText
+                android:id="@+id/input_full_name"
+                style="@style/RegistrationInput"
+                android:autofillHints="name"
+                android:drawableStart="@drawable/ic_registration_person"
+                android:hint="@string/full_name_hint"
+                android:imeOptions="actionNext"
+                android:inputType="textPersonName"
+                android:nextFocusForward="@id/input_email" />
+
+            <TextView
+                style="@style/RegistrationLabel"
+                android:text="@string/email" />
+
+            <EditText
+                android:id="@+id/input_email"
+                style="@style/RegistrationInput"
+                android:autofillHints="emailAddress"
+                android:drawableStart="@drawable/ic_registration_email"
+                android:hint="@string/email_hint"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:nextFocusForward="@id/input_password" />
+
+            <TextView
+                style="@style/RegistrationLabel"
+                android:text="@string/password" />
+
+            <EditText
+                android:id="@+id/input_password"
+                style="@style/RegistrationInput"
+                android:autofillHints="newPassword"
+                android:drawableStart="@drawable/ic_registration_lock"
+                android:drawableEnd="@drawable/ic_registration_eye"
+                android:hint="@string/password_hint"
+                android:imeOptions="actionNext"
+                android:inputType="textPassword"
+                android:nextFocusForward="@id/input_confirm_password" />
+
+            <TextView
+                style="@style/RegistrationLabel"
+                android:text="@string/confirm_password" />
+
+            <EditText
+                android:id="@+id/input_confirm_password"
+                style="@style/RegistrationInput"
+                android:autofillHints="newPassword"
+                android:drawableStart="@drawable/ic_registration_lock"
+                android:drawableEnd="@drawable/ic_registration_eye"
+                android:hint="@string/confirm_password_hint"
+                android:imeOptions="actionNext"
+                android:inputType="textPassword"
+                android:nextFocusForward="@id/input_phone_number" />
+
+            <TextView
+                style="@style/RegistrationLabel"
+                android:text="@string/phone_number" />
+
+            <EditText
+                android:id="@+id/input_phone_number"
+                style="@style/RegistrationInput"
+                android:autofillHints="phone"
+                android:drawableStart="@drawable/ic_registration_phone"
+                android:hint="@string/phone_number_hint"
+                android:imeOptions="actionDone"
+                android:inputType="phone" />
+
+            <TextView
+                android:id="@+id/text_gender_label"
+                style="@style/RegistrationLabel"
+                android:layout_marginBottom="0dp"
+                android:text="@string/gender" />
+
+            <RadioGroup
+                android:id="@+id/group_gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:checkedButton="@id/radio_male"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radio_male"
+                    style="@style/RegistrationGenderOption"
+                    android:text="@string/male" />
+
+                <RadioButton
+                    android:id="@+id/radio_female"
+                    style="@style/RegistrationGenderOption"
+                    android:text="@string/female" />
+
+                <RadioButton
+                    android:id="@+id/radio_other"
+                    style="@style/RegistrationGenderOption"
+                    android:text="@string/other" />
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/button_register"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/registration_button_background"
+                android:backgroundTint="@color/registration_purple"
+                android:text="@string/register"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
